@@ -26,18 +26,18 @@
         <span class="card-link">Open module →</span>
     </a>
 
-    <div class="feature-card upcoming">
+    <a class="feature-card" href="{{ url_for('order_create') }}">
         <span class="feature-number">02</span>
         <h3>Orders & Billing</h3>
         <p>Create customer orders and calculate bills.</p>
-        <span class="card-link">Coming next</span>
-    </div>
+        <span class="card-link">Create order →</span>
+    </a>
 
-    <div class="feature-card upcoming">
+    <a class="feature-card" href="{{ url_for('order_history') }}">
         <span class="feature-number">03</span>
         <h3>Order History</h3>
         <p>Review saved orders and their totals.</p>
-        <span class="card-link">Coming next</span>
-    </div>
+        <span class="card-link">View history →</span>
+    </a>
 </div>
 {% endblock %}
