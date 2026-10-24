@@ -112,11 +112,11 @@ Responsibilities:
 | available | Availability flag |
 | created_at | Record creation timestamp |
 
-The orders and order-items tables will be added when the Order and Billing module is implemented.
+`orders` stores the owner, customer, status, timestamp, and final total. `order_items` stores the item name, unit price, quantity, and line total at purchase time, so later menu price changes never change a bill. Pending orders may be edited or cancelled; completed/cancelled orders are immutable. Menu items referenced by orders cannot be deleted and should instead be marked unavailable.
 
 ## 8. Testing Strategy
 
-Testing will include:
+Testing includes an isolated temporary SQLite pytest suite for authentication, protected pages, menu CRUD and search, order totals, price snapshots, cancellation, rollback behavior, ownership, and required page rendering. Run it using `python -m pytest -q`.
 - Functional testing of menu and order workflows.
 - Input validation testing.
 - Boundary-value analysis for numeric fields such as price and quantity.
