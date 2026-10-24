@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if order else 'Create' }} Order{% endblock %}
+{% block content %}
+<h1>{{ 'Edit order #' ~ order.id if order else 'Create order' }}</h1>
+<form class="form-card" method="post" id="order-form">
+  <label>Customer name<input name="customer_name" required value="{{ request.form.get('customer_name', order.customer_name if order else '') }}"></label>
+  <div class="add-item-control">
+    <label for="menu-item-picker">Add Menu Items</label>
+    <select id="menu-item-picker"><option value="">Choose an available menu item</option>{% for item in items %}<option value="{{ item.id }}" data-name="{{ item.name }}" data-price="{{ item.price }}">{{ item.name }} — ₹{{ '%.2f'|format(item.price) }}</option>{% endfor %}</select>
+    <button type="button" id="add-menu-item">Add item</button>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>Item</th><th>Current price</th><th>Quantity</th><th></th></tr></thead><tbody id="cart-items">
+    {% if order %}{% for item in items %}{% if quantities.get(item.name) %}<tr data-item-id="{{ item.id }}"><td>{{ item.name }}</td><td>₹{{ '%.2f'|format(item.price) }}</td><td><input class="qty" type="number" min="1" name="qty_{{ item.id }}" value="{{ request.form.get('qty_' ~ item.id, quantities.get(item.name)) }}"></td><td><button type="button" class="remove-cart-item">Remove</button></td></tr>{% endif %}{% endfor %}{% endif %}
+  </tbody></table></div>
+  <p id="empty-cart" {% if order and quantities %}hidden{% endif %}>Your order is empty. Choose an item above to add it.</p>
+  <button class="button">{{ 'Save changes' if order else 'Place order' }}</button>
+</form>
+{% endblock %}
