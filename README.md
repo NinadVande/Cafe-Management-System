@@ -1,19 +1,63 @@
-# Brew & Bean Cafe Management System
+# Cafe Management System
 
-Flask and SQLite application for staff authentication, menu management, orders, and printable bills.
+A web-based cafe management application built with **Python, Flask, SQLite, HTML, CSS, and JavaScript** to manage menu items, user authentication, orders, and billing.
 
-## Run on Windows PowerShell
+## Features
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-$env:SECRET_KEY = "replace-with-a-long-random-value"
-python app.py
+- **Menu Management** — Add, view, search, edit, and delete menu items.
+- **User Authentication** — Registration, login, logout, and password hashing.
+- **Order Management** — Create orders and maintain order history.
+- **Billing** — Calculate order totals and preserve item prices in order records.
+- **Testing** — Automated tests using `pytest`.
+
+## Tech Stack
+
+- **Backend:** Python, Flask
+- **Database:** SQLite
+- **Frontend:** HTML, CSS, JavaScript
+- **Testing:** pytest
+
+## Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/NinadVande/Cafe-Management-System.git
+   cd Cafe-Management-System
+   ```
+
+2. Create and activate a virtual environment:
+
+   ```bash
+   python -m venv .venv
+   ```
+
+   Windows PowerShell:
+
+   ```powershell
+   .venv\Scripts\Activate.ps1
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   pip install Flask pytest Werkzeug
+   ```
+
+4. Run the application:
+
+   ```bash
+   python app.py
+   ```
+
+5. Open the local URL shown in the terminal.
+
+## Run Tests
+
+```bash
+python -m pytest -v
 ```
 
-Open `http://127.0.0.1:5000`. The database initializes safely at `instance/cafe.sqlite`; existing data is retained. Without `SECRET_KEY`, a development-only fallback is used and must not be used in production.
+## Project Status
 
-Run tests with `python -m pytest -q`.
-
-Main routes: `/register`, `/login`, `/menu`, `/menu/add`, `/order/create`, and `/orders`.
+Developed as a **Problem-Based Learning (PBL)** project.
